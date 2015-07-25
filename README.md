@@ -1,7 +1,7 @@
 # String-SideBasedTrimming
-Trims a String(or NSString) in iOS on a certain side
+Trims a String or NSString in iOS on a certain side.
 
-This file is written in Swift.  You will need to write `#import "XXX-Swift.h"` into your .m file if you're programming in Objective-C
+This file is written in Swift 2, which requires Xcode 7+.  You will need to write `#import "XXX-Swift.h"` into your .m file if you're programming in Objective-C
 
 ###Methods
 `func stringByStrippingPaddingOffSide(side: StringSide) -> String`
