@@ -1,7 +1,6 @@
-
 //
 //  String+Functions.swift
-//  PointOfSale
+//
 //
 //  Created by Michael Schloss on 6/1/15.
 //  Copyright (c) 2015 Michael Schloss. All rights reserved.
@@ -33,7 +32,7 @@ extension String
     */
     func stringByStrippingPaddingOffSide(side: StringSide) -> String
     {
-        if count(self) == 0
+        if self.characters.count == 0
         {
             return self
         }
@@ -42,10 +41,9 @@ extension String
         switch side
         {
         case .Left:     //Takes all 0's off of left side
-            while count(newString) > 0 && newString.substringToIndex(advance(startIndex, 1)) == "0"
+            while newString.characters.count > 0 && newString.substringToIndex(advance(startIndex, 1)) == "0"
             {
                 newString = newString.substringFromIndex(advance(startIndex, 1))
-                println(newString)
             }
             break
             
@@ -53,13 +51,44 @@ extension String
             //This case has an interesting side effect.  If self is initially "" or nil, adding initial 0's will produce a "" string.
             //This is comparable to -stringByTrimmingCharactersInSet, in which this case will auto-trim the left side if inital value is 0[0...]"
             //This effect is only seen when adding to the string from "" or nil, this is not the case when the full string is already set
-            while count(newString) > 0 && newString.substringFromIndex(advance(endIndex, -1)) == "0"
+            while newString.characters.count > 0 && newString.substringFromIndex(advance(endIndex, -1)) == "0"
             {
                 newString = newString.substringToIndex(advance(endIndex, -1))
             }
             break
+        }
+        
+        return newString
+    }
+}
+
+extension NSString
+{
+    func stringByStrippingPaddingOffSide(side: StringSide) -> NSString
+    {
+        if length == 0
+        {
+            return self
+        }
+        
+        var newString = self
+        switch side
+        {
+        case .Left:     //Takes all 0's off of left side
+            while newString.length > 0 && newString.substringToIndex(1) == "0"
+            {
+                newString = newString.substringFromIndex(1)
+            }
+            break
             
-        default:
+        case .Right:    //Takes all 0's off right side.
+            //This case has an interesting side effect.  If self is initially "" or nil, adding initial 0's will produce a "" string.
+            //This is comparable to -stringByTrimmingCharactersInSet, in which this case will auto-trim the left side if inital value is 0[0...]"
+            //This effect is only seen when adding to the string from "" or nil, this is not the case when the full string is already set
+            while newString.length > 0 && newString.substringFromIndex(newString.length - 1) == "0"
+            {
+                newString = newString.substringToIndex(newString.length - 1)
+            }
             break
         }
         
