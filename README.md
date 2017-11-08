@@ -1,19 +1,19 @@
 # String-SideBasedTrimming
-Trims a String or NSString in iOS on a certain side.
+Trims a String in Swift on a given side.
 
-This file is written in Swift 2, which requires Xcode 7+.  You will need to write `#import "XXX-Swift.h"` into your .m file if you're programming in Objective-C
+This file is written in Swift 4, which requires Xcode 9+.
 
-###Methods
-`func stringByStrippingPaddingOffSide(side: StringSide) -> String`
+### Methods
 
-* This is the main method.  It will trim the string on whichever StringSide you provide. (See below for accepted values)
+#### `strippingPadding(off:, paddingCharacter: default) -> String`
+Given a side (and a padding character [defaults to "0"]), this method will return a new string with all instances of `paddingCharacter` removed from the given side.  This will not affect instances of `paddingCharacter` in between other characters.
 
-###Values
+### Enums
 
-`StringSide`
+`Side`
 
-* `Left` (`StringSideLeft`):
-	* The left side of the string
+* `beginning`:
+	* The beginning of the string
 
-* `Right` (`StringSideRight`):
-	* The right side of the string
+* `end`:
+	* The end of the string
